@@ -1,0 +1,68 @@
+@use "variables" as *;
+
+// ブレークポイント
+
+@mixin pc {
+  @media (max-width: $bp-pc) {
+    @content;
+  }
+}
+
+@mixin tb {
+  @media (max-width: $bp-tb) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width: $bp-sp) {
+    @content;
+  }
+}
+
+// アニメーション
+
+// じわっと透明度を変えるアニメーション
+@mixin hover-opacity($opacity: 0.7, $speed: 0.3s) {
+  transition: opacity $speed ease;
+
+  &:hover {
+    opacity: $opacity;
+  }
+}
+
+// 少し浮き上がって影をつけるアニメーション
+@mixin hover-lift($y: -4px, $speed: 0.3s) {
+  transition: transform $speed cubic-bezier(0.25, 1, 0.5, 1), box-shadow $speed ease;
+
+  &:hover {
+    transform: translateY($y);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+// 下線が中央（または左）からじわっと伸びるアニメーション
+@mixin hover-underline($color: currentColor, $height: 2px, $speed: 0.3s) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; // 線の位置調整
+    width: 100%;
+    height: $height;
+    background-color: $color;
+    transform: scaleX(0); // 最初は横幅を0（見えない状態）にしておく
+    transform-origin: left; // 左から右に伸ばす場合（center にすると中央から広がる）
+    transition: transform $speed ease;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1); // ホバー時に横幅を100%にする
+    }
+  }
+}
+

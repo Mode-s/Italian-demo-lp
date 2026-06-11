@@ -1,0 +1,60 @@
+---
+import { Icon } from 'astro-icon/components';
+import { siteConfig } from '../../config/site';
+
+const { shop, sns } = siteConfig;
+
+const snsLinks = [
+  { label: "X",         href: sns.x,         icon: "simple-icons:x" },
+  { label: "Instagram", href: sns.instagram, icon: "simple-icons:instagram" },
+  { label: "LINE",      href: sns.line,      icon: "simple-icons:line" },
+  { label: "Facebook",  href: sns.facebook,  icon: "simple-icons:facebook" },
+].filter(( item ) => item.href );
+---
+<section class="section contact" id="contact">
+  <div class="inner contact-inner">
+    <header class="section-title">
+      <h2 class="title">Contact</h2>
+    </header>
+    <div class="actions">
+      { shop.tel.display && (
+        <a class="tel" href={`tel:${ shop.tel.link }`}>
+          <Icon class="contact-tel-icon" name="mdi:phone" />
+          { shop.tel.display }
+        </a>
+      )}
+      { snsLinks.length > 0 && (
+        <ul class="sns-list">
+          { snsLinks.map(( item ) => (
+            <li class="sns-item">
+              <a class="sns-link" href={ item.href } target="_blank" rel="noopener noreferrer">
+                <Icon class="sns-icon" name={item.icon} />
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/variables" as *;
+  @use "../../styles/mixins" as *;
+
+  // ―――――――――――――――――――――――――――――――――――
+  .section {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
+  @include tb {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
+  @include sp {
+
+  }
+</style>

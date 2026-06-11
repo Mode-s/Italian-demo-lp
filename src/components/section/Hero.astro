@@ -1,0 +1,47 @@
+---
+import { getImage } from 'astro:assets';
+
+// import pcHero from '../../assets/images/pc-hero.png';
+// import tabHero from '../../assets/images/tab-hero.png';
+// import spHero from '../../assets/images/sp-hero.png';
+
+// const pc = await getImage({ src: pcHero, format: 'webp' });
+// const tab = await getImage({ src: tabHero, format: 'webp' });
+// const sp = await getImage({ src: spHero, format: 'webp' });
+---
+<section class="hero">
+  <!--<picture class="hero-picture">
+    <source media="(max-width: 500px)" srcset={sp.src} />
+    <source media="(max-width: 768px)" srcset={tab.src} />
+    <img
+      src={pc.src}
+      alt=""
+      data-hero-image
+    />
+  </picture> -->
+</section>
+
+<style lang="scss">
+  @use "../../styles/variables" as *;
+  @use "../../styles/mixins" as *;
+
+
+  // ――――――――――――――――――――――――――――――――――― hero
+  .hero {
+
+  }
+  // ――――――――――――――――――――――――――――――――――― hero-picture
+  .hero-picture {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
+  @include tb {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
+  @include sp {
+
+  }
+</style>

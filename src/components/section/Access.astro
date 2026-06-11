@@ -1,0 +1,38 @@
+---
+import { siteConfig } from '../../config/site';
+
+const { shop, name } = siteConfig;
+---
+<section class="section access" id="access">
+  <div class="inner access-inner">
+    <header class="section-title">
+      <h2 class="title">Access</h2>
+    </header>
+    {shop.address && <p class="address">{shop.address}</p>}
+    {shop.map && (
+      <div class="access-map">
+        <iframe class="map" src={shop.map} title={`${name}の地図`} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen ></iframe>
+      </div>
+    )}
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/variables" as *;
+  @use "../../styles/mixins" as *;
+
+  // ―――――――――――――――――――――――――――――――――――
+  .section {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
+  @include tb {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
+  @include sp {
+
+  }
+</style>

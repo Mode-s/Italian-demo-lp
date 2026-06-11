@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { content } from '../../config/content';
+
+const { title, items } = content.menu;
+---
+<section class="section menu" id="menu">
+  <div class="inner menu-inner">
+    <header class="section-title">
+      <h2 class="title">{ title }</h2>
+    </header>
+    <ul class="list">
+      {items.map((item) => (
+        <li class="item">
+          <div class="img-wrap">
+            <Image class="image" src={ item.image } alt={ item.name } />
+          </div>
+          <div class="body">
+            <h3 class="name">{ item.name }</h3>
+            {item.price && <p class="price">{ item. price }</p>}
+            {item.description && <p class="description">{ item.description }</p>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/variables" as *;
+  @use "../../styles/mixins" as *;
+
+  // ―――――――――――――――――――――――――――――――――――
+  .section {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
+  @include tb {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
+  @include sp {
+
+  }
+</style>

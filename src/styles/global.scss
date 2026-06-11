@@ -1,0 +1,65 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// ――――――――――――――――――――――――― global
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+// ――――――――――――――――――――――――― 
+body {
+  min-height: 100vh;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $color-base;
+  overflow-x: clip;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+// ――――――――――――――――――――――――― 
+a {
+  display: block;
+  cursor: pointer;
+}
+// ――――――――――――――――――――――――― 
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+// ――――――――――――――――――――――――― 
+button {
+  cursor: pointer;
+}
+// ――――――――――――――――――――――――― 
+.section {
+  padding: 80px 20px;
+}
+// ――――――――――――――――――――――――― 
+.inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+// ――――――――――――――――――――――――― 
+.section-title {
+
+}
+// ――――――――――――――――――――――――― 
+.title {
+
+}
+
+// ――――――――――――――――――――――――― タブレット
+@include tb {
+  // ――――――――――――――――――――――――― 
+}
+
+// ――――――――――――――――――――――――― スマホ
+@include sp {
+  // ――――――――――――――――――――――――― 
+  .section {
+    padding: 48px 20px;
+  }
+}

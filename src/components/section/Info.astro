@@ -1,0 +1,72 @@
+---
+import { siteConfig } from '../../config/site';
+
+const { shop } = siteConfig;
+---
+<section class="section info" id="info">
+  <div class="inner info-inner">
+    <header class="section-title">
+      <h2 class="title">Info</h2>
+    </header>
+    <dl class="info-list">
+      {shop.address && (
+        <>
+          <dt class="info-label">住所</dt>
+          <dd class="info-data">{shop.address}</dd>
+        </>
+      )}
+      {shop.tel.display && (
+        <>
+          <dt class="info-label">電話</dt>
+          <dd class="info-data">
+            <a href={`tel:${shop.tel.link}`}>{shop.tel.display}</a>
+          </dd>
+        </>
+      )}
+      {shop.hours   && (
+        <>
+          <dt class="info-label">営業時間</dt>
+          <dd class="info-data">{shop.hours}</dd>
+        </>
+      )}
+      {shop.closed  && (
+        <>
+          <dt class="info-label">定休日</dt>
+          <dd class="info-data">{shop.closed}</dd>
+        </>
+      )}
+      {shop.seats   && (
+        <>
+          <dt class="info-label">席数</dt>
+          <dd class="info-data">{shop.seats}</dd>
+        </>
+      )}
+      {shop.parking && (
+        <>
+          <dt class="info-label">駐車場</dt>
+          <dd class="info-data">{shop.parking}</dd>
+        </>
+      )}
+    </dl>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/variables" as *;
+  @use "../../styles/mixins" as *;
+
+  // ―――――――――――――――――――――――――――――――――――
+  .section {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
+  @include tb {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
+  @include sp {
+
+  }
+</style>

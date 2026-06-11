@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+import { siteConfig } from '../../config/site';
+import { content } from '../../config/content';
+
+const { logo } = content.header;
+---
+<footer class="footer">
+  <div class="inner footer-inner">
+    <a class="logo-link" href={logo.href}>
+      <Image class="logo-img" src={logo.src} alt={logo.alt} />
+    </a>
+    <small class="copyright">
+      &copy; 2026 {siteConfig.name} 
+    </small>
+  </div>
+</footer>
+
+<style lang="scss">
+  @use "../../styles/variables" as *;
+  @use "../../styles/mixins" as *;
+
+  // ―――――――――――――――――――――――――――――――――――
+
+  //―――――――――――――――――――――――――――――――――――――― タブレット
+  @include tb {
+
+  }
+
+  //―――――――――――――――――――――――――――――――――――――― スマホ
+  @include sp {
+
+  }
+</style>
