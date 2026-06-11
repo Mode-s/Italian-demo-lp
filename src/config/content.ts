@@ -5,11 +5,11 @@ import { siteConfig } from './site';
 import logoImg from '../assets/images/logo.png';
 
 //　メニュー / プランイメージ画像
-import item01 from '../assets/images/logo.png';
-import item02 from '../assets/images/logo.png';
-import item03 from '../assets/images/logo.png';
-import item04 from '../assets/images/logo.png';
-import item05 from '../assets/images/logo.png';
+import item01 from '../assets/images/menu01-v1.png';
+import item02 from '../assets/images/menu02-v1.png';
+import item03 from '../assets/images/menu03-v1.png';
+import item04 from '../assets/images/menu04-v1.png';
+import item05 from '../assets/images/menu05-v1.png';
 
 type Logo = { src: ImageMetadata; alt: string; href: string };
 type NavItem = { label: string; href: string };
@@ -34,11 +34,11 @@ export const content = {
   menu: {
     title: "",
     items: [
-      { image: item01, name: "商品A", price: "10", description: "あ" },
-      { image: item02, name: "商品B", price: "20", description: "い" },
-      { image: item03, name: "商品C", price: "30", description: "う" },
-      { image: item04, name: "商品D", price: "40", description: "え" },
-      { image: item05, name: "商品E", price: "50", description: "お" },
+      { image: item01, name: "マルゲリータ", price: "￥1,780", description: "トマトソース、モッツァレラ、バジルの王道ピッツァ。シンプルだからこそ、素材の旨みが際立ちます。" },
+      { image: item02, name: "ビアンカ", price: "￥1,880", description: "モッツァレラとリコッタ、グラナバダーノのコク。オリーブオイルが香る、チーズ好きのための一枚。" },
+      { image: item03, name: "カルボナーラ", price: "￥1,680", description: "濃厚な卵とチーズのソースに、パンチェッタの旨みを重ねたローマの伝統パスタ。" },
+      { image: item04, name: "ブロシュートとルッコラのサラダ", price: "￥1,380", description: "生ハムの塩気とルッコラの苦味が絶妙。グラナチーズとレモンの香りでさっぱりと。" },
+      { image: item05, name: "ティラミス", price: "￥680", description: "マスカルポーネのなめらかさと、エスプレッソのほろ苦さが口の中でとろけます。" },
     ] satisfies Item[],
   },
 } as const;
