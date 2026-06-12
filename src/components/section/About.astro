@@ -1,10 +1,28 @@
 ---
+import { Image } from 'astro:assets';
+
+import deco03 from '../../assets/images/deco03.png';
+import textBg from '../../assets/images/text-bg.png';
 ---
 <section class="section about" id="about">
   <div class="inner about-inner">
     <header class="section-title">
-      <h2 class="title"></h2>
+      <h2 class="title">ABOUT</h2>
+      <div class="deco-wrap-first">
+        <Image class="deco03" src={ deco03 } alt="" />
+      </div>
     </header>
+    <div class="top-wrap">
+      <h3 class="label">ナポリの情熱を。</h3>
+      <div class="text-wrap">
+        <p class="text">PIZZERIA NAPOLIは、薪窯で焼き上げる本格ナポリピッツァと、素材の旨みを活かしたイタリア料理をお届けするお店です。</p>
+        <p class="text">イタリア・ナポリの伝統を大切にしながら、日本の旬の食材を取り入れた、ここでしか味わえない一皿を。</p>
+        <p class="text">家族や友人、大切な人と過ごす時間が、もっと特別になるように。心を込めて、おもてなしいたします。</p>
+      </div>
+    </div>
+    <div class="deco-wrap-seconde">
+      <Image src={ textBg } alt="" />
+    </div>
   </div>
 </section>
 
@@ -13,9 +31,36 @@
   @use "../../styles/mixins" as *;
 
   // ――――――――――――――――――――――――――――――――――――――――
-  .section {
-
+  .section-title {
+    position: relative;
+    display: inline-block;
   }
+
+  .deco-wrap-first {
+    position: absolute;
+    top: 80%;
+    left: 100%;
+    max-width: 200px;
+    width: clamp(150px, 5vw, 100%);
+    transform: translate(-30%, -40%);
+  }
+
+  .deco03 {
+    display: block;
+  }
+
+  .body {
+    margin-top: 50px;
+  }
+
+  .label {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+
+  .text-wrap {
+    margin-top: 3%;
+  }
+
 
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
   @include tb {

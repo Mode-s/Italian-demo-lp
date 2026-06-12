@@ -32,7 +32,7 @@ export const content = {
   },
   //　メニュー
   menu: {
-    title: "",
+    title: "MENU",
     items: [
       { image: item01, name: "マルゲリータ", price: "￥1,780", description: "トマトソース、モッツァレラ、バジルの王道ピッツァ。シンプルだからこそ、素材の旨みが際立ちます。" },
       { image: item02, name: "ビアンカ", price: "￥1,880", description: "モッツァレラとリコッタ、グラナバダーノのコク。オリーブオイルが香る、チーズ好きのための一枚。" },
