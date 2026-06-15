@@ -35,6 +35,37 @@ const { title, items } = content.menu;
 
   }
 
+  .item {
+    position: relative;
+    display: grid;
+    padding: 60px 0;
+  }
+
+  .img-wrap,
+  .body {
+    grid-area: 1 / 1;
+  }
+
+  .img-wrap {
+    justify-self: end;
+    width: clamp(200px, 55vw, 900px);
+  }
+
+  .image {
+    display: block;
+  }
+
+  .body {
+    align-self: end;
+    padding: 40px 16px 0;
+  }
+
+  .price,
+  .description {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
   @include tb {
 
