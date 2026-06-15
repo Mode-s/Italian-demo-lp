@@ -45,10 +45,27 @@ button {
 // ――――――――――――――――――――――――― 
 .section-title {
   font-family: "Jockey One", sans-serif;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 24px);
+  padding-left: clamp(20px, 4vw, 36px);
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 700;
   letter-spacing: 0.07em;
   line-height: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(14px, 2.5vw, 28px);
+    height: 1em;
+    background: url('../assets/images/deco05.png') no-repeat center / contain;
+    pointer-events: none;
+  }
 }
 // ――――――――――――――――――――――――― 
 .title {
