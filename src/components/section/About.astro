@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 
 import deco03 from '../../assets/images/deco03.png';
 import textBg from '../../assets/images/text-bg.png';
+import deco04 from '../../assets/images/deco04.png';
 ---
 <section class="section about" id="about">
   <div class="inner about-inner">
@@ -13,15 +14,27 @@ import textBg from '../../assets/images/text-bg.png';
       </div>
     </header>
     <div class="top-wrap">
-      <h3 class="label">ナポリの情熱を。</h3>
-      <div class="text-wrap">
-        <p class="text">PIZZERIA NAPOLIは、薪窯で焼き上げる本格ナポリピッツァと、素材の旨みを活かしたイタリア料理をお届けするお店です。</p>
-        <p class="text">イタリア・ナポリの伝統を大切にしながら、日本の旬の食材を取り入れた、ここでしか味わえない一皿を。</p>
-        <p class="text">家族や友人、大切な人と過ごす時間が、もっと特別になるように。心を込めて、おもてなしいたします。</p>
+      <div class="top-content">
+        <h3 class="label">ナポリの情熱を。</h3>
+        <div class="text-wrap">
+          <p class="text">PIZZERIA NAPOLIは、薪窯で焼き上げる本格ナポリピッツァと、素材の旨みを活かしたイタリア料理をお届けするお店です。</p>
+          <p class="text">イタリア・ナポリの伝統を大切にしながら、日本の旬の食材を取り入れた、ここでしか味わえない一皿を。</p>
+          <p class="text">家族や友人、大切な人と過ごす時間が、もっと特別になるように。心を込めて、おもてなしいたします。</p>
+        </div>
       </div>
     </div>
-    <div class="deco-wrap-seconde">
-      <Image src={ textBg } alt="" />
+    <div class="deco-wrap-second">
+      <Image class="deco-bg" src={ textBg } alt="" />
+      <div class="deco-content">
+        <p class="text">食材のひとつひとつに感謝し、丁寧に、まっすぐに。</p>
+        <p class="text">お客様の「おいしい！」の一言が、私たちの原動力です。</p>
+        <p class="text">皆さまの大切な時間に寄り添えるお店でありたいと思っています。</p>
+        <div class="owner-wrap">
+          <p class="owner-label">オーナーシェフ</p>
+          <span class="owner-deco">|</span>
+          <p class="owner-name">Marco Rossi</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -34,6 +47,7 @@ import textBg from '../../assets/images/text-bg.png';
   .section-title {
     position: relative;
     display: inline-block;
+    z-index: 1;
   }
 
   .deco-wrap-first {
@@ -43,22 +57,56 @@ import textBg from '../../assets/images/text-bg.png';
     max-width: 200px;
     width: clamp(150px, 5vw, 100%);
     transform: translate(-30%, -40%);
+    z-index: -1;
   }
 
   .deco03 {
     display: block;
-  }
-
-  .body {
-    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.6);
   }
 
   .label {
-    font-size: clamp(2rem, 5vw, 2.5rem);
+    display: inline-block;
+    margin-top: 16px;
+    font-size: clamp(1.5rem, 5vw, 2rem);
   }
 
   .text-wrap {
     margin-top: 3%;
+  }
+
+  .text-wrap .text {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .top-wrap {
+    position: relative;
+  }
+
+  .deco-wrap-second {
+    position: relative;
+    max-width: 1240px;
+    margin: 80px auto 0;
+  }
+
+  .deco-bg {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    z-index: 0;
+    object-fit: fill; 
+  }
+
+  .deco-content {
+    position: relative;
+    padding: 16px;
+  }
+
+  .owner-wrap {
+    display: flex;
+    gap: 8px;
+    margin-top: 28px;
   }
 
 

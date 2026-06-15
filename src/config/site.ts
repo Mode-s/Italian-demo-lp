@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "企業名 : 店舗名", //　企業名、店舗名
-  title: "ページタイトル",
+  name: "PIZZERIA NAPOLI", //　企業名、店舗名
+  title: "PIZZERIA NAPOLI",
   description: "ディスクリプション文",
   url: "https://example.com",      // 本番URL（OGPの絶対パス生成にも使う）
   ogImage: "/ogp.png",
@@ -8,10 +8,10 @@ export const siteConfig = {
   locale: "ja_JP",
   // SNS
   sns: {
-    x: "https://x.com", //　x - URL
+    x: "", //　x - URL
     instagram: "https://instagram.com", //　instagram - URL
     line: "https://line.com", //　line - URL
-    facebook: "https://facebook.com", //　facebook - URL
+    facebook: "", //　facebook - URL
   },
 
   //　基本情報
