@@ -62,10 +62,25 @@ const { title, items } = content.menu;
     padding: 40px 16px 0;
   }
 
+  .name {
+    font-weight: 500;
+  }
+
   .price,
   .description {
-    display: inline-block;
+    display: block;
+    width: fit-content;
     background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .description {
+    margin-top: 16px;
+  }
+
+  @include pc {
+    .img-wrap {
+      /* justify-self: center;  画像を中央配置にしたい場合 */
+    }
   }
 
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
@@ -75,6 +90,8 @@ const { title, items } = content.menu;
 
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ
   @include sp {
-
+    .body {
+      padding-top: 160px;
+    }
   }
 </style>
