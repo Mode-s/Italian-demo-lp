@@ -23,11 +23,11 @@ export const content = {
       href: "/",
     } satisfies Logo,
     nav: [
-      { label: "ABOUT",   href: "#" },
-      { label: "MENU",    href: "#" },
-      { label: "INFO",    href: "#" },
-      { label: "ACCESS",  href: "#" },
-      { label: "CONTACT", href: "#" },
+      { label: "ABOUT",   href: "#about" },
+      { label: "MENU",    href: "#menu" },
+      { label: "INFO",    href: "#info" },
+      { label: "ACCESS",  href: "#access" },
+      { label: "CONTACT", href: "#contact" },
     ] satisfies NavItem[],
   },
   //　メニュー

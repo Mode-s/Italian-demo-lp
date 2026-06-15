@@ -9,6 +9,7 @@ const snsLinks = [
   { label: "Instagram", href: sns.instagram, icon: "simple-icons:instagram" },
   { label: "LINE",      href: sns.line,      icon: "simple-icons:line" },
   { label: "Facebook",  href: sns.facebook,  icon: "simple-icons:facebook" },
+  { label: "食べログ",   href: sns.tabelog,   icon: "simple-icons:tabelog" },
 ].filter(( item ) => item.href );
 ---
 <section class="section contact" id="contact">
@@ -16,11 +17,12 @@ const snsLinks = [
     <header class="section-title">
       <h2 class="title">CONTACT</h2>
     </header>
+    <p class="text">お問い合わせ・ご予約は、<br />下記電話または各SNSまでお願いします。</p>
     <div class="actions">
       { shop.tel.display && (
         <a class="tel" href={`tel:${ shop.tel.link }`}>
           <Icon class="contact-tel-icon" name="mdi:phone" />
-          { shop.tel.display }
+          <p class="tel-label" >{ shop.tel.display }</p>
         </a>
       )}
       { snsLinks.length > 0 && (
@@ -29,7 +31,7 @@ const snsLinks = [
             <li class="sns-item">
               <a class="sns-link" href={ item.href } target="_blank" rel="noopener noreferrer">
                 <Icon class="sns-icon" name={item.icon} />
-                {item.label}
+                <p class="sns-label">{item.label}</p>
               </a>
             </li>
           ))}
@@ -43,9 +45,68 @@ const snsLinks = [
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
 
-  // ―――――――――――――――――――――――――――――――――――
-  .section {
+  .text {
+    text-align: center;
+    margin-top: 56px;
+    font-size: clamp(0.7rem, 5vw, 0.9rem);
+  }
 
+  // ―――――――――――――――――――――――――――――――――――
+  .actions {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 auto;
+  }
+
+  .sns-list {
+    display: inline-flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 56px;
+  }
+
+  .tel,
+  .sns-link {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .tel {
+    justify-content: center;
+    max-width: 300px;
+    width: 100%;
+    gap: 8px;
+    margin: 56px auto 0;
+    padding: 10px 40px;
+    border-radius: 50px;
+    background-color: #70a86f;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .contact-tel-icon,
+  .sns-icon {
+    display: block;
+    flex-shrink: 0;
+    width: 1.25em;
+    height: 1.25em;
+  }
+
+  .sns-link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sns-icon {
+    background-color: red;
+  }
+
+  .sns-label {
+    font-size: clamp(0.6rem, 5vw, 0.9rem);
   }
 
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット

@@ -12,6 +12,7 @@ export const siteConfig = {
     instagram: "https://instagram.com", //　instagram - URL
     line: "https://line.com", //　line - URL
     facebook: "", //　facebook - URL
+    tabelog: "https://tabelog.com/",
   },
 
   //　基本情報
@@ -21,7 +22,7 @@ export const siteConfig = {
       link: "12345678910", //　tel：リンク用（ハイフンなし）
     },
     email: "example@example.com", //　メールアドレス
-    address: "〒123-4567 東京都", //　住所
+    address: "〒123-4567 東京都渋谷区新南12345", //　住所
     access: "東京駅", //　最寄駅
     hours: "10:00～19:00", //　営業時間
     closed: "土日", //　定休日
