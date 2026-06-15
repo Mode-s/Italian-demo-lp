@@ -36,11 +36,29 @@ const { logo, nav } = content.header;
   }
   // ―――――――――――――――――――――――――――――――――――
   .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    padding: 20px 40px 20px 20px;
+  }
+
+  .header-logo {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 40px;
+    letter-spacing: 0.1em;
 
   }
   //―――――――――――――――――――――――――――――――――――――― タブレット
   @include tb {
-
+    .nav-list {
+      display: none;
+    }
   }
 
   //―――――――――――――――――――――――――――――――――――――― スマホ
