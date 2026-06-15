@@ -1,9 +1,20 @@
 ---
 import { siteConfig } from '../../config/site';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+import shopOut from '../../assets/images/shop-out.png';
+
 
 const { shop } = siteConfig;
+
+const snsLinks = [
+  { label: "Instagram", href: siteConfig.sns.instagram, icon: "simple-icons:instagram" },
+  { label: "LINE",      href: siteConfig.sns.line,      icon: "simple-icons:line" },
+].filter(( item ) => item.href );
 ---
 <section class="section info" id="info">
+  <Image class="info-bg" src={shopOut} alt="" />
   <div class="inner info-inner">
     <header class="section-title">
       <h2 class="title">INFO</h2>
@@ -11,40 +22,72 @@ const { shop } = siteConfig;
     <dl class="info-list">
       {shop.address && (
         <>
-          <dt class="info-label">住所</dt>
-          <dd class="info-data">{shop.address}</dd>
+          <div class="info-row">
+            <dt class="info-label">住所</dt>
+            <dd class="info-data">{shop.address}</dd>
+          </div>
         </>
       )}
       {shop.tel.display && (
         <>
-          <dt class="info-label">電話</dt>
-          <dd class="info-data">
-            <a href={`tel:${shop.tel.link}`}>{shop.tel.display}</a>
-          </dd>
+          <div class="info-row">
+            <dt class="info-label">電話</dt>
+            <dd class="info-data">
+              <a href={`tel:${shop.tel.link}`}>{shop.tel.display}</a>
+            </dd>
+          </div>
         </>
       )}
       {shop.hours   && (
         <>
-          <dt class="info-label">営業時間</dt>
-          <dd class="info-data">{shop.hours}</dd>
+          <div class="info-row">
+            <dt class="info-label">営業時間</dt>
+            <dd class="info-data">{shop.hours}</dd>
+          </div>
         </>
       )}
       {shop.closed  && (
         <>
-          <dt class="info-label">定休日</dt>
-          <dd class="info-data">{shop.closed}</dd>
+          <div class="info-row">
+            <dt class="info-label">定休日</dt>
+            <dd class="info-data">{shop.closed}</dd>
+          </div>
         </>
       )}
       {shop.seats   && (
         <>
-          <dt class="info-label">席数</dt>
-          <dd class="info-data">{shop.seats}</dd>
+          <div class="info-row">
+            <dt class="info-label">席数</dt>
+            <dd class="info-data">{shop.seats}</dd>
+          </div>
         </>
       )}
       {shop.parking && (
         <>
-          <dt class="info-label">駐車場</dt>
-          <dd class="info-data">{shop.parking}</dd>
+          <div class="info-row">
+            <dt class="info-label">駐車場</dt>
+            <dd class="info-data">{shop.parking}</dd>
+          </div>
+        </>
+      )}
+      {shop.parking && (
+        <>
+          <div class="info-row">
+            <dt class="info-label">SNS</dt>
+            <dd class="info-data">
+              { snsLinks.length > 0 && (
+                <ul class="sns-list">
+                  { snsLinks.map(( item ) => (
+                    <li class="sns-item">
+                      <a class="sns-link" href={ item.href } target="_blank" rel="noopener noreferrer">
+                        <Icon class="sns-icon" name={item.icon} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </dd>
+          </div>
         </>
       )}
     </dl>
@@ -55,6 +98,75 @@ const { shop } = siteConfig;
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
 
+  .info {
+    position: relative;
+    color: #fff;
+
+    &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    }
+  }
+
+  .info-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .info-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .info-list {
+    max-width: 700px;
+    margin: 40px auto 0;
+  }
+
+  .info-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.644);
+  }
+
+  .info-label {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .info-data {
+    padding: 16px;
+  }
+
+  .info-link {
+    display: inline;
+    color: #fff;
+  }
+
+  .sns-list {
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .sns-link {
+    display: inline-flex;
+  }
+
+  .sns-icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
   // ―――――――――――――――――――――――――――――――――――
   .section {
 
@@ -62,7 +174,9 @@ const { shop } = siteConfig;
 
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
   @include tb {
-
+    .info-row {
+      display: block;
+    }
   }
 
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / スマホ

@@ -6,10 +6,10 @@ const { shop, sns } = siteConfig;
 
 const snsLinks = [
   { label: "X",         href: sns.x,         icon: "simple-icons:x" },
-  { label: "Instagram", href: sns.instagram, icon: "simple-icons:instagram" },
-  { label: "LINE",      href: sns.line,      icon: "simple-icons:line" },
+  { label: "Instagram", href: sns.instagram, icon: "simple-icons:instagram", slug: "instagram" },
+  { label: "LINE",      href: sns.line,      icon: "simple-icons:line",      slug: "line" },
   { label: "Facebook",  href: sns.facebook,  icon: "simple-icons:facebook" },
-  { label: "食べログ",   href: sns.tabelog,   icon: "simple-icons:tabelog" },
+  { label: "食べログ",   href: sns.tabelog,   icon: "simple-icons:tabelog",   slug:"tabelog" },
 ].filter(( item ) => item.href );
 ---
 <section class="section contact" id="contact">
@@ -29,7 +29,7 @@ const snsLinks = [
         <ul class="sns-list">
           { snsLinks.map(( item ) => (
             <li class="sns-item">
-              <a class="sns-link" href={ item.href } target="_blank" rel="noopener noreferrer">
+              <a class={`sns-link sns-link--${item.slug}`} href={ item.href } target="_blank" rel="noopener noreferrer">
                 <Icon class="sns-icon" name={item.icon} />
                 <p class="sns-label">{item.label}</p>
               </a>
@@ -64,7 +64,7 @@ const snsLinks = [
   .sns-list {
     display: inline-flex;
     justify-content: center;
-    gap: 16px;
+    gap: 48px;
     margin-top: 56px;
   }
 
@@ -98,15 +98,37 @@ const snsLinks = [
   .sns-link {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
+    color: inherit;
   }
 
   .sns-icon {
-    background-color: red;
+    display: block;
+    flex-shrink: 0;
   }
 
   .sns-label {
     font-size: clamp(0.6rem, 5vw, 0.9rem);
+  }
+
+  .sns-link--x {
+    color: #000000;
+  }
+  .sns-link--instagram {
+    color: #e4405f;
+  }
+  .sns-link--line {
+    color: #06c755;
+  }
+  .sns-link--tabelog {
+    color: #f59600;
+  }
+
+  .sns-link--instagram .sns-label {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット
