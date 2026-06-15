@@ -31,8 +31,10 @@ const { title, items } = content.menu;
   @use "../../styles/mixins" as *;
 
   // ―――――――――――――――――――――――――――――――――――
-  .section {
-
+  .section-title {
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
 
   .item {
