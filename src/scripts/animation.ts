@@ -194,7 +194,6 @@ const initSectionReveals = (): void => {
       const infoSection = document.querySelector<HTMLElement>('.info');
       if (infoBg && infoSection) {
         gsap.to(infoBg, {
-          scale: 1.12,
           ease: 'none',
           scrollTrigger: {
             trigger: infoSection,
