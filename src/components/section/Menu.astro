@@ -10,8 +10,9 @@ const { title, items } = content.menu;
       <h2 class="title">{ title }</h2>
     </header>
     <ul class="list">
-      {items.map((item) => (
-        <li class="item">
+      {items.map((item, index) => (
+        <li class="item" style={`z-index: ${index + 1}`}>
+          <span class="number" aria-hidden="true">{ String(index + 1).padStart(2, "0") }</span>
           <div class="img-wrap">
             <Image class="image" src={ item.image } alt={ item.name } />
           </div>
@@ -32,19 +33,38 @@ const { title, items } = content.menu;
 
   // ―――――――――――――――――――――――――――――――――――
   .section-title {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    position: relative;
+    z-index: 20;
   }
 
+  // スタッキング用カード（GSAP ScrollTrigger でピン留めされる）
   .item {
     position: relative;
     display: grid;
+    align-content: center;
+    min-height: 100vh;
     padding: 60px 0;
+    background-color: $bg-base;
+  }
+
+  .number {
+    position: absolute;
+    top: clamp(24px, 8vh, 90px);
+    left: clamp(0px, 1vw, 12px);
+    z-index: 0;
+    font-family: "Jockey One", sans-serif;
+    font-size: clamp(4rem, 14vw, 11rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: rgba(151, 132, 93, 0.22);
+    pointer-events: none;
+    user-select: none;
   }
 
   .img-wrap,
   .body {
+    position: relative;
+    z-index: 1;
     grid-area: 1 / 1;
   }
 
