@@ -1,24 +1,11 @@
 ---
-import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 
-// import pcHero from '../../assets/images/pc-hero.png';
-// import tabHero from '../../assets/images/tab-hero.png';
-// import spHero from '../../assets/images/sp-hero.png';
+import hero from '../../assets/images/hero-bg.jpg';
 
-// const pc = await getImage({ src: pcHero, format: 'webp' });
-// const tab = await getImage({ src: tabHero, format: 'webp' });
-// const sp = await getImage({ src: spHero, format: 'webp' });
 ---
 <section class="hero">
-  <!--<picture class="hero-picture">
-    <source media="(max-width: 500px)" srcset={sp.src} />
-    <source media="(max-width: 768px)" srcset={tab.src} />
-    <img
-      src={pc.src}
-      alt=""
-      data-hero-image
-    />
-  </picture> -->
+  <Image class="hero-image" src={ hero } alt="" />
 </section>
 
 <style lang="scss">
@@ -28,11 +15,14 @@ import { getImage } from 'astro:assets';
 
   // ――――――――――――――――――――――――――――――――――― hero
   .hero {
-    height: 100dvh;
+    width: 100%;
   }
   // ――――――――――――――――――――――――――――――――――― hero-picture
-  .hero-picture {
-
+  .hero-image {
+    display: block;
+    width: 100%;
+    height: 100dvh;
+    object-fit: cover;
   }
 
   //―――――――――――――――――――――――――――――――――――――― ブレークポイント / タブレット

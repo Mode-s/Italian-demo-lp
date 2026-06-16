@@ -12,7 +12,8 @@ const { logo, nav } = content.header;
         <Image class="logo-img" src={logo.src} alt={logo.alt} />
       </a>
     </h1>
-    <nav class="nav">
+
+    <nav class="nav" id="global-nav">
       <ul class="nav-list">
         {nav.map((item) => (
           <li class="nav-item">
@@ -22,8 +23,25 @@ const { logo, nav } = content.header;
           </li>
         ))}
       </ul>
+      <a class="contact-link contact-link_sp" href="#contact">予約する</a>
     </nav>
+
+    <a class="contact-link contact-link_pc" href="#contact">予約する</a>
+
+    <button
+      class="menu-btn"
+      type="button"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="global-nav"
+    >
+      <span class="menu-btn-line"></span>
+      <span class="menu-btn-line"></span>
+      <span class="menu-btn-line"></span>
+    </button>
   </div>
+
+  <div class="nav-overlay"></div>
 </header>
 
 <style lang="scss">
@@ -32,13 +50,19 @@ const { logo, nav } = content.header;
 
   // ―――――――――――――――――――――――――――――――――――
   .header {
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+    background-color: $bg-base;
   }
   // ―――――――――――――――――――――――――――――――――――
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 24px;
     max-width: 1200px;
     padding: 20px 40px 20px 20px;
   }
@@ -48,21 +72,149 @@ const { logo, nav } = content.header;
     max-height: 100px;
   }
 
+  .nav {
+    margin-left: auto;
+  }
+
   .nav-list {
     display: flex;
     gap: 40px;
+    font-weight: 500;
     letter-spacing: 0.1em;
-
   }
+
+  .contact-link {
+    border-radius: 50px;
+    padding: 10px 20px;
+    background-color: #70a86f;
+    color: $bg-base;
+    white-space: nowrap;
+  }
+
+  .contact-link_sp {
+    display: none;
+  }
+
+  .menu-btn {
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 40;
+  }
+
+  .menu-btn-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 7px 0;
+    background: $fc-base;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .nav-overlay {
+    display: none;
+  }
+
   //―――――――――――――――――――――――――――――――――――――― タブレット
   @include tb {
-    .nav-list {
+    .menu-btn {
+      display: block;
+    }
+
+    .contact-link_pc {
       display: none;
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%; 
+      margin-left: 0;
+      padding: 100px 24px 24px;
+      background: $bg-base;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.98);
+      transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+      z-index: 35;
+    }
+
+    .nav.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-link_sp {
+      display: inline-block;
+      margin-top: 32px;
+    }
+
+    .nav-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 34;
+    }
+
+    .nav-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu-btn.is-open .menu-btn-line:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-btn.is-open .menu-btn-line:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.is-open .menu-btn-line:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
     }
   }
 
-  //―――――――――――――――――――――――――――――――――――――― スマホ
-  @include sp {
-
-  }
 </style>
+
+<script>
+  const menuBtn = document.querySelector('.menu-btn');
+  const nav = document.querySelector('.nav');
+  const overlay = document.querySelector('.nav-overlay');
+
+  const setMenu = (isOpen: boolean) => {
+    nav?.classList.toggle('is-open', isOpen);
+    overlay?.classList.toggle('is-open', isOpen);
+    menuBtn?.classList.toggle('is-open', isOpen);
+    menuBtn?.setAttribute('aria-expanded', String(isOpen));
+    menuBtn?.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+    document.documentElement.classList.toggle('is-menu-open', isOpen);
+    document.body.classList.toggle('is-menu-open', isOpen); 
+  };
+
+  menuBtn?.addEventListener('click', () => {
+    setMenu(!nav?.classList.contains('is-open'));
+  });
+
+  overlay?.addEventListener('click', () => setMenu(false));
+
+  nav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenu(false));
+  });
+</script>
